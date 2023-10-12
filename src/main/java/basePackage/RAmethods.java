@@ -1,6 +1,7 @@
 package basePackage;
 
 import io.restassured.response.Response;
+
 import java.util.Map;
 
 /**
@@ -14,7 +15,7 @@ public interface RAmethods {
      * Sends a GET request to the specified endpoint.
      *
      * @param endpoint The URL endpoint to send the GET request to.
-     * @param headers Custom headers to include in the request (can be null if no custom headers are needed).
+     * @param headers  Custom headers to include in the request (can be null if no custom headers are needed).
      * @param basePath The base path of the GET call (can be an empty string if not required).
      * @return A Response object representing the server's response to the request.
      */
@@ -24,10 +25,10 @@ public interface RAmethods {
     /**
      * Sends a POST request to the specified endpoint with a request body and custom headers.
      *
-     * @param endpoint The URL endpoint to send the POST request to.
+     * @param endpoint    The URL endpoint to send the POST request to.
      * @param requestBody The request body to include in the POST request.
-     * @param headers Custom headers to include in the request (can be null if no custom headers are needed).
-     * @param basePath The base path of the POST call (can be an empty string if not required).
+     * @param headers     Custom headers to include in the request (can be null if no custom headers are needed).
+     * @param basePath    The base path of the POST call (can be an empty string if not required).
      * @return A Response object representing the server's response to the request.
      */
 
@@ -36,10 +37,10 @@ public interface RAmethods {
     /**
      * Sends a PUT request to the specified endpoint with a request body and custom headers.
      *
-     * @param endpoint The URL endpoint to send the PUT request to.
+     * @param endpoint    The URL endpoint to send the PUT request to.
      * @param requestBody The request body to include in the PUT request.
-     * @param headers Custom headers to include in the request (can be null if no custom headers are needed).
-     * @param basePath The base path of the PUT call (can be an empty string if not required).
+     * @param headers     Custom headers to include in the request (can be null if no custom headers are needed).
+     * @param basePath    The base path of the PUT call (can be an empty string if not required).
      * @return A Response object representing the server's response to the request.
      */
 
@@ -58,7 +59,7 @@ public interface RAmethods {
     /**
      * Sends an UPDATE request to the specified endpoint with a request body.
      *
-     * @param endpoint The URL endpoint to send the UPDATE request to.
+     * @param endpoint    The URL endpoint to send the UPDATE request to.
      * @param requestBody The request body to include in the UPDATE request.
      * @return A Response object representing the server's response to the request.
      */
@@ -68,7 +69,7 @@ public interface RAmethods {
     /**
      * Sends a PATCH request to the specified endpoint with a request body.
      *
-     * @param endpoint The URL endpoint to send the PATCH request to.
+     * @param endpoint    The URL endpoint to send the PATCH request to.
      * @param requestBody The request body to include in the PATCH request.
      * @return A Response object representing the server's response to the request.
      */

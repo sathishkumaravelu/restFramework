@@ -12,6 +12,7 @@ public class DataGenerator {
     private final Faker faker;
     private final SimpleDateFormat dateFormat;
     private String checkinDate;
+
     public DataGenerator() {
         this.faker = new Faker();
         this.dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // Date format for check-in and check-out dates

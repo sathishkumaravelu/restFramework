@@ -1,14 +1,19 @@
 package basePackage;
 
 
-import pojo.*;
 import io.restassured.response.Response;
+import pojo.AuthBodyPojo;
+import pojo.AuthBody_TokenPojo;
+import pojo.BookingResponsePojo;
+import pojo.createBookingRequest;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class RAWrapper extends RAmethodsImpl {
 
     public static final String endpoint = "https://restful-booker.herokuapp.com";
+    Map<String, String> putHeader = new HashMap<>();
 
     private Map<String, String> setContentTypeHeader() {
         Map<String, String> header = new HashMap<>();
@@ -22,9 +27,6 @@ public class RAWrapper extends RAmethodsImpl {
         header.put("Cookie", "token=" + createAuthTokenPojo().getToken());
         return header;
     }
-
-
-    Map<String, String> putHeader = new HashMap<>();
 
     private AuthBodyPojo setAuthRequestPojoBody() {
         AuthBodyPojo authRequestPojoBody = new AuthBodyPojo();
@@ -61,7 +63,7 @@ public class RAWrapper extends RAmethodsImpl {
         return pingResponse;
     }
 
-    public AuthBody_TokenPojo createAuthTokenPojo()throws Exception  {
+    public AuthBody_TokenPojo createAuthTokenPojo() throws Exception {
         Response pingResponse = post(endpoint, setAuthRequestPojoBody(), setContentTypeHeader(), "auth");
         pingResponse.prettyPrint();
         pingResponse.then().statusCode(200);
@@ -81,7 +83,7 @@ public class RAWrapper extends RAmethodsImpl {
         return booking.getBody().as(createBookingRequest.class);
     }
 
-    public Response createBooking(String firstName, String lastName, String totalPrice, String deposit, String checkinDate, String checkoutDate, String extraNeed)throws Exception  {
+    public Response createBooking(String firstName, String lastName, String totalPrice, String deposit, String checkinDate, String checkoutDate, String extraNeed) throws Exception {
 
         Response booking = post(endpoint, setcreateBookingRequestBody(firstName, lastName, totalPrice, deposit, checkinDate, checkoutDate, extraNeed), setContentTypeHeader(), "booking");
         booking.prettyPrint();
@@ -102,20 +104,20 @@ public class RAWrapper extends RAmethodsImpl {
         return booking;
     }
 
-    public Response updateBookingPojoBody(Object requestBody,String id) throws Exception {
-        Response booking = put(endpoint, requestBody, setUpdateHeader(), "booking/"+id);
+    public Response updateBookingPojoBody(Object requestBody, String id) throws Exception {
+        Response booking = put(endpoint, requestBody, setUpdateHeader(), "booking/" + id);
         booking.prettyPrint();
         return booking;
     }
 
-    public createBookingRequest updateBookingPojo(String firstName, String lastName, String totalPrice, String deposit, String checkinDate, String checkoutDate, String extraNeed)throws Exception  {
+    public createBookingRequest updateBookingPojo(String firstName, String lastName, String totalPrice, String deposit, String checkinDate, String checkoutDate, String extraNeed) throws Exception {
         Response booking = put(endpoint, setcreateBookingRequestBody(firstName, lastName, totalPrice, deposit, checkinDate, checkoutDate, extraNeed), setUpdateHeader(), "booking");
         booking.prettyPrint();
         booking.then().statusCode(200);
         return booking.getBody().as(createBookingRequest.class);
     }
 
-    public Response deleteBooking(String id)throws Exception  {
+    public Response deleteBooking(String id) throws Exception {
         return get(endpoint, setUpdateHeader(), "booking" + id);
     }
 

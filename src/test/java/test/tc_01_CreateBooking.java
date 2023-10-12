@@ -1,10 +1,10 @@
 package test;
 
-import faker.DataGenerator;
-import pojo.createBookingRequest;
 import basePackage.RAWrapper;
+import faker.DataGenerator;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
+import pojo.createBookingRequest;
 
 public class tc_01_CreateBooking extends RAWrapper {
 
@@ -28,7 +28,7 @@ public class tc_01_CreateBooking extends RAWrapper {
     }
 
     @Test(dependsOnMethods = {"tc_createBooking"})
-    public void tc_updateBooking() throws Exception{
+    public void tc_updateBooking() throws Exception {
         createBookingRequest bookingPojo = getBookingPojo(bookingid);
         bookingPojo.setLastname(data.generateLastName());
         Response response = updateBookingPojoBody(bookingPojo, bookingid);

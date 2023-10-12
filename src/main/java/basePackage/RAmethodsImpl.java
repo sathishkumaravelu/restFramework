@@ -1,8 +1,8 @@
 package basePackage;
 
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,13 +10,13 @@ import org.slf4j.LoggerFactory;
 import java.util.Map;
 
 public class RAmethodsImpl implements RAmethods {
-    private RequestSpecification requestSpec;
     private static final Logger logger = LoggerFactory.getLogger(RAmethodsImpl.class);
+    private RequestSpecification requestSpec;
 
     @Override
     public Response get(String endpoint, Map<String, String> headers, String basePath) throws Exception {
         try {
-            Response response = RestAssured.given().baseUri(endpoint).basePath( "/"+ basePath).get();
+            Response response = RestAssured.given().baseUri(endpoint).basePath("/" + basePath).get();
             logger.debug("GET Request URL: " + endpoint + "/" + basePath);
             logger.debug("GET Response Status Code: " + response.getStatusCode());
             return response;
@@ -116,7 +116,7 @@ public class RAmethodsImpl implements RAmethods {
             return response;
         } catch (Exception e) {
             logger.error("Error in HEAD request: " + e.getMessage(), e);
-            throw new Exception ("Error in HEAD request: " + e.getMessage());
+            throw new Exception("Error in HEAD request: " + e.getMessage());
         }
     }
 }

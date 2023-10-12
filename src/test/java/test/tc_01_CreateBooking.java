@@ -1,7 +1,7 @@
 package test;
 
-import Fackers.DataGenerator;
-import POJO.createBookingRequest;
+import faker.DataGenerator;
+import pojo.createBookingRequest;
 import basePackage.RAWrapper;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;

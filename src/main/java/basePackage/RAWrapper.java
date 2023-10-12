@@ -1,7 +1,7 @@
 package basePackage;
 
 
-import POJO.*;
+import pojo.*;
 import io.restassured.response.Response;
 import java.util.HashMap;
 import java.util.Map;
